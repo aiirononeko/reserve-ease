@@ -1,11 +1,12 @@
 import type { MetaFunction } from '@remix-run/cloudflare'
+import { Button } from '~/components/ui/button'
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'New Remix App' },
+    { title: 'トップページ | ReserveEase' },
     {
       name: 'description',
-      content: 'Welcome to Remix on Cloudflare!',
+      content: '',
     },
   ]
 }
@@ -14,6 +15,7 @@ export default function Index() {
   return (
     <div className='font-sans p-4'>
       <h1 className='text-3xl'>Welcome to Remix on Hono on Cloudflare!!!</h1>
+      <Button>button</Button>
       <ul className='list-disc mt-4 pl-6 space-y-2'>
         <li>
           <a

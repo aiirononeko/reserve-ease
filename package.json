@@ -20,16 +20,22 @@
   },
   "dependencies": {
     "@hono/vite-dev-server": "^0.14.0",
+    "@radix-ui/react-slot": "^1.1.0",
     "@remix-run/cloudflare": "^2.11.1",
     "@remix-run/cloudflare-pages": "^2.11.1",
     "@remix-run/react": "^2.11.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "hono": "^4.5.8",
     "husky": "^9.1.5",
     "isbot": "^4.1.0",
     "lint-staged": "^15.2.9",
+    "lucide-react": "^0.435.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "remix-hono": "^0.0.16"
+    "remix-hono": "^0.0.16",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240821.1",
