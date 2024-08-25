@@ -54,6 +54,9 @@ export default {
         // sans: ["Mulish", ...defaultTheme.fontFamily.sans],
         sans: ['Mulish'],
       },
+      backgroundImage: {
+        hero: 'url(/assets/hero.webp)',
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
