@@ -5,7 +5,7 @@ import { Button } from '~/components/ui/button'
 
 export default function Index() {
   return (
-    <div className='space-y-8'>
+    <div className='space-y-16'>
       <div className='h-screen'>
         <div className='bg-[#DCEFEE] h-full flex flex-col justify-center items-center px-5 pt-16'>
           <div className='space-y-10 max-w-[620px]'>
