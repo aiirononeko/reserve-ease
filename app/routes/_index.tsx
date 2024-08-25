@@ -7,7 +7,7 @@ export default function Index() {
     <div className='space-y-8'>
       <div className='h-screen'>
         <div className='bg-[#DCEFEE] h-full flex flex-col justify-center items-center p-5 pt-16'>
-          <div className='space-y-10 lg:space-y-8'>
+          <div className='space-y-10 lg:space-y-8 max-w-[620px]'>
             <div className='font-medium text-5xl space-y-4'>
               <p>Reserve</p>
               <p>Ease</p>
@@ -29,7 +29,7 @@ export default function Index() {
         </div>
       </div>
       <div className='p-5 flex flex-col justify-center items-center'>
-        <div className='space-y-10'>
+        <div className='space-y-10 max-w-[620px]'>
           <h2 className='font-medium text-2xl'>
             予約管理に必要な機能は全て揃っています
           </h2>
@@ -43,7 +43,7 @@ export default function Index() {
         </div>
       </div>
       <div className='p-5 flex flex-col justify-center items-center'>
-        <div className='space-y-10'>
+        <div className='space-y-10 max-w-[620px]'>
           <h2 className='font-medium text-2xl'>
             あなたのブランドに合ったデザインの予約ページを作成できます
           </h2>
