@@ -5,9 +5,11 @@ export const ComparisonTable = () => {
     <table className='text-center w-full flex-none'>
       <thead>
         <tr className='border border-primary'>
-          <td className='border-r border-primary min-w-32'></td>
-          <td className='border-2 border-primary px-2 py-4 max-w-24 sm:min-w-32 break-words'>
-            ReserveEase
+          <td className='border-r border-primary min-w-28'></td>
+          <td className='border-2 border-primary px-2 py-4'>
+            Reserve
+            <br className='sm:hidden' />
+            Ease
           </td>
           <td className='border-r border-primary px-2 py-4 text-sm'>
             他社有料プラン
