@@ -1,32 +1,36 @@
-import type { LoaderFunctionArgs, MetaFunction } from '@remix-run/cloudflare'
-import { json } from '@remix-run/cloudflare'
-import { useLoaderData } from '@remix-run/react'
-
-export const meta: MetaFunction = () => {
-  return [{ title: 'Remix and Hono on Vite' }]
-}
-
-export const loader = async ({ context }: LoaderFunctionArgs) => {
-  const { env } = context.cloudflare
-  return json({ myVar: env.MY_VAR })
-}
+import type { MetaFunction } from '@remix-run/cloudflare'
+import { Link } from '@remix-run/react'
+import { Button } from '~/components/ui/button'
 
 export default function Index() {
-  const { myVar } = useLoaderData<typeof loader>()
-
   return (
     <div>
-      <h1>Welcome Remix and Hono on Vite</h1>
-      <ul>
-        <li>Remix, {myVar}</li>
-        <li>
-          <a href='/hono'>Hono</a>
-        </li>
-      </ul>
-      <img src='/assets/hero.webp' />
-      <div className='h-32 w-32'>
-        <h1>hoge</h1>
+      <div className='h-screen'>
+        {/* <img src='/assets/hero.webp' /> */}
+        <div className='bg-gray-200 h-full flex flex-col justify-center space-y-10 p-5 sm:p-10 md:p-32 lg:p-80 xl:p-96'>
+          <div className='font-medium text-5xl space-y-4'>
+            <p>Reserve</p>
+            <p>Ease</p>
+          </div>
+          <div className='space-y-2 font-medium'>
+            <p>
+              フリーランスや個人事業主のための
+              <br />
+              シンプルで洗練された予約システム
+            </p>
+            <p>
+              ブランドイメージを損ねない予約サイトで、顧客に最高の予約体験を提供します
+            </p>
+          </div>
+          <Button asChild className='w-2/3 max-w-80'>
+            <Link to='/'>初月無料で使ってみる</Link>
+          </Button>
+        </div>
       </div>
     </div>
   )
+}
+
+export const meta: MetaFunction = () => {
+  return [{ title: 'トップページ | ReserveEase' }]
 }

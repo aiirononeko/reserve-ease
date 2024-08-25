@@ -1,6 +1,7 @@
 import devServer, { defaultOptions } from '@hono/vite-dev-server'
 import adapter from '@hono/vite-dev-server/cloudflare'
 import { vitePlugin as remix } from '@remix-run/dev'
+import path from 'path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -18,4 +19,9 @@ export default defineConfig({
       injectClientScript: false,
     }),
   ],
+  resolve: {
+    alias: {
+      '~': path.resolve(__dirname, './app'),
+    },
+  },
 })
