@@ -7,7 +7,7 @@ export default function Index() {
     <div>
       <div className='h-screen'>
         {/* <img src='/assets/hero.webp' /> */}
-        <div className='bg-gray-200 h-full flex flex-col justify-center space-y-10 p-5 sm:p-10 md:p-32 lg:p-80 xl:p-96'>
+        <div className='bg-[#CFE8E7] h-full flex flex-col justify-center space-y-10 p-5 pt-16 sm:p-10 md:p-32 lg:p-80 xl:p-96'>
           <div className='font-medium text-5xl space-y-4'>
             <p>Reserve</p>
             <p>Ease</p>
@@ -19,7 +19,7 @@ export default function Index() {
               シンプルで洗練された予約システム
             </p>
             <p>
-              ブランドイメージを損ねない予約サイトで、顧客に最高の予約体験を提供します
+              ブランドイメージを損ねない予約ページで、顧客に最高の予約体験を提供します
             </p>
           </div>
           <Button asChild className='w-2/3 max-w-80'>
