@@ -1,16 +1,20 @@
 import type { MetaFunction } from '@remix-run/cloudflare'
 import { Link } from '@remix-run/react'
+import { ComparisonTable } from '~/components/top/comparison-table'
 import { Button } from '~/components/ui/button'
 
 export default function Index() {
   return (
     <div className='space-y-8'>
       <div className='h-screen'>
-        <div className='bg-[#DCEFEE] h-full flex flex-col justify-center items-center p-5 pt-16'>
+        <div className='bg-[#DCEFEE] h-full flex flex-col justify-center items-center px-5 pt-16'>
           <div className='space-y-10 max-w-[620px]'>
             <div className='font-medium text-5xl space-y-4'>
               <p>Reserve</p>
               <p>Ease</p>
+              <p className='text-muted-foreground text-sm pt-1'>
+                - リザーブイーズ
+              </p>
             </div>
             <div className='space-y-2 font-medium'>
               <p>
@@ -31,7 +35,7 @@ export default function Index() {
       <div className='p-5 flex flex-col justify-center items-center'>
         <div className='space-y-10 max-w-[620px]'>
           <h2 className='font-medium text-2xl'>
-            予約管理に必要な機能は全て揃っています
+            予約管理に必要な機能は全て揃っています。
           </h2>
           <div className='space-y-2'>
             <p>
@@ -45,7 +49,7 @@ export default function Index() {
       <div className='p-5 flex flex-col justify-center items-center'>
         <div className='space-y-10 max-w-[620px]'>
           <h2 className='font-medium text-2xl'>
-            あなたのブランドに合ったデザインの予約ページを作成できます
+            あなたのブランドに合ったデザインの予約ページを作成できます。
           </h2>
           <div className='space-y-2'>
             <p>
@@ -56,6 +60,14 @@ export default function Index() {
             </p>
           </div>
           <div className='bg-gray-100 w-full h-80 rounded-lg'></div>
+        </div>
+      </div>
+      <div className='p-5 flex flex-col justify-center items-center'>
+        <div className='space-y-10 max-w-[620px]'>
+          <h2 className='font-medium text-2xl'>
+            個人利用に特化した料金設定。月額料金以外の追加課金はありません。
+          </h2>
+          <ComparisonTable />
         </div>
       </div>
     </div>
