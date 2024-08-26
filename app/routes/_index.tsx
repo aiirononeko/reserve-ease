@@ -36,7 +36,7 @@ export const meta: MetaFunction = () => {
     },
     {
       property: 'og:image',
-      content: 'https://www.reserve-ease.com/top-ogp.webp',
+      content: 'https://www.reserve-ease.com/assets/top-ogp.webp',
     },
     {
       property: 'og:title',
