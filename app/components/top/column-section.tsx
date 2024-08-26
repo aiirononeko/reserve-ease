@@ -11,7 +11,7 @@ export const ColumnSection = () => {
         </h2>
         <div className='flex justify-center'>
           <Button asChild className='w-2/3 max-w-80'>
-            <Link to='/'>コラムをみる</Link>
+            <Link to='/articles'>コラムをみる</Link>
           </Button>
         </div>
       </div>

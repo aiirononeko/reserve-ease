@@ -7,15 +7,15 @@ import { remix } from 'remix-hono/handler'
 
 const app = new Hono<{
   Bindings: {
-    MY_VAR: string
+    BUN_VERSION: string
+    MICROCMS_SERVICE_DOMAIN: string
+    MICROCMS_API_KEY: string
   }
 }>()
 
 let handler: RequestHandler | undefined
 
 app.use(poweredBy())
-app.get('/hono', (c) => c.text('Hono, ' + c.env.MY_VAR))
-
 app.use(
   async (c, next) => {
     if (process.env.NODE_ENV !== 'development' || import.meta.env.PROD) {

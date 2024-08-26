@@ -4,7 +4,7 @@ compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = "./build/client"
 
 [vars]
-MY_VAR = "Hello from Cloudflare"
+BUN_VERSION = "1.1.23"
 
 # [[kv_namespaces]]
 # binding = "MY_KV_NAMESPACE"
