@@ -1,60 +1,54 @@
-import { LoaderFunctionArgs, json } from '@remix-run/cloudflare'
+import { json } from '@remix-run/cloudflare'
+import { LoaderFunctionArgs } from '@remix-run/cloudflare'
 import { MetaFunction } from '@remix-run/cloudflare'
 import { useLoaderData } from '@remix-run/react'
+import parse from 'html-react-parser'
 import { createClient } from 'microcms-js-sdk'
-import { ContentCard } from '~/components/articles/content-card'
 
-export const loader = async ({ context }: LoaderFunctionArgs) => {
+export const loader = async ({ request, context }: LoaderFunctionArgs) => {
+  const url = new URL(request.url)
+  const tab = url.searchParams.get('tab') ?? ''
+
+  const determineContentId = (tag: string): string => {
+    switch (tag) {
+      case 'privacy':
+        return 'gcduwm-cz' // プライバシーポリシー
+      case 'specified':
+        return '03tpp08irfz' // 特定商法取引に関する表記
+      default:
+        return '9n3lyk3xm595' // 利用規約
+    }
+  }
+
   const client = createClient({
     serviceDomain: context.cloudflare.env.MICROCMS_SERVICE_DOMAIN,
     apiKey: context.cloudflare.env.MICROCMS_API_KEY,
   })
 
-  const { contents } = await client.getList<Blog>({
+  const { content } = await client.get<Blog>({
     endpoint: 'articles',
-    queries: {
-      orders: '-createdAt',
-      filters:
-        'id[not_equals]9n3lyk3xm595[and]id[not_equals]03tpp08irfz[and]id[not_equals]gcduwm-cz',
-    },
+    contentId: determineContentId(tab),
   })
 
-  return json({ contents })
+  return json({ content })
 }
 
 export default function Index() {
-  const { contents } = useLoaderData<typeof loader>()
+  const { content } = useLoaderData<typeof loader>()
 
-  return (
-    <div className='container mx-auto max-w-[1120px] space-y-10 md:space-y-16 pt-28 md:pt-40 pb-16'>
-      <h2 className='text-center text-2xl font-medium'>すべてのコラム</h2>
-      {contents.length > 0 ? (
-        <div className='grid lg:grid-cols-3 gap-8 justify-center'>
-          {contents.map((content) => (
-            <ContentCard key={content.id} content={content} />
-          ))}
-        </div>
-      ) : (
-        <div>
-          <p className='text-muted-foreground text-center'>
-            記事が見つかりません
-          </p>
-        </div>
-      )}
-    </div>
-  )
+  return <div id='article'>{parse(content)}</div>
 }
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'コラム | ReserveEase' },
+    { title: '規約とポリシー | ReserveEase' },
     {
       description:
         'ReserveEaseはフリーランスや個人事業主向けの予約システムです。あなたのブランドに寄り添った予約ページを作成し、顧客に良質な予約体験を提供しましょう。',
     },
     {
       property: 'og:url',
-      content: 'https://www.reserve-ease.com/articles',
+      content: 'https://www.reserve-ease.com/terms',
     },
     {
       property: 'og:image',
@@ -62,7 +56,7 @@ export const meta: MetaFunction = () => {
     },
     {
       property: 'og:title',
-      content: 'コラム | ReserveEase',
+      content: '規約とポリシー | ReserveEase',
     },
     {
       property: 'og:description',
@@ -79,7 +73,7 @@ export const meta: MetaFunction = () => {
     },
     {
       property: 'twitter:title',
-      content: 'コラム | ReserveEase',
+      content: '規約とポリシー | ReserveEase',
     },
   ]
 }

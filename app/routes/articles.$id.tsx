@@ -1,12 +1,11 @@
 import { format } from '@formkit/tempo'
 import { MetaFunction, json } from '@remix-run/cloudflare'
-import { Link, useLoaderData } from '@remix-run/react'
+import { useLoaderData } from '@remix-run/react'
 import { RefreshCcw } from 'lucide-react'
 import { createClient } from 'microcms-js-sdk'
 import { LoaderFunctionArgs } from 'react-router'
 import invariant from 'tiny-invariant'
 import { ContentDetail } from '~/components/articles/content-detail'
-import { Button } from '~/components/ui/button'
 
 export const loader = async ({
   request,
