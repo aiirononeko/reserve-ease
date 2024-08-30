@@ -22,7 +22,7 @@ export const ComparisonTable = () => {
           <td className='border-r border-primary px-2 py-4 text-sm'>
             月額料金
           </td>
-          <td className='border-2 border-primary px-2 py-4'>550円</td>
+          <td className='border-2 border-primary px-2 py-4'>980円</td>
           <td className='border-r border-primary px-2 py-4 text-sm'>3980円</td>
           <td className='border-r border-primary px-2 py-4 text-sm'>0円</td>
         </tr>
