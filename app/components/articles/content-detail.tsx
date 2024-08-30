@@ -36,11 +36,6 @@ export const ContentDetail = ({ content }: Props) => {
         </div>
         <div id='article' className='article'>
           {parse(content.content)}
-          <div className='flex justify-center mt-6 md:py-2'>
-            <Button asChild className='w-80'>
-              <Link to='/'>初月無料で試す</Link>
-            </Button>
-          </div>
         </div>
       </div>
       {isSp ? (
