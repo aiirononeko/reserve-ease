@@ -7,14 +7,8 @@ import { LoaderFunctionArgs } from 'react-router'
 import invariant from 'tiny-invariant'
 import { ContentDetail } from '~/components/articles/content-detail'
 
-export const loader = async ({
-  request,
-  params,
-  context,
-}: LoaderFunctionArgs) => {
+export const loader = async ({ params, context }: LoaderFunctionArgs) => {
   invariant(params.id, 'コンテンツIDが指定されていません')
-
-  const { origin } = new URL(request.url)
 
   const client = createClient({
     serviceDomain: context.cloudflare.env.MICROCMS_SERVICE_DOMAIN,
@@ -26,7 +20,7 @@ export const loader = async ({
     contentId: params.id,
   })
 
-  return json({ content, origin })
+  return json({ content })
 }
 
 export default function Content() {
@@ -72,7 +66,7 @@ export default function Content() {
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data) return []
-  const { content, origin } = data
+  const { content } = data
 
   return [
     {
@@ -88,7 +82,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
     },
     {
       property: 'og:image',
-      content: `${origin}/resource/og?id=${content.id}`,
+      content: content.eyecatch.url,
     },
     {
       property: 'og:title',
