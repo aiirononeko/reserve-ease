@@ -26,7 +26,11 @@ export default function Dashboard() {
           ReserveEaseの開発状況やフリーランス向けのコラムを公式Xにて発信しております。
         </p>
         <Button variant='link' asChild className='pl-0'>
-          <a href='https://x.com/ReserveEase' className='underline'>
+          <a
+            href='https://x.com/ReserveEase'
+            target='_blank'
+            className='underline'
+          >
             公式Xはこちら
           </a>
         </Button>
