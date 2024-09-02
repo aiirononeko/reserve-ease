@@ -26,8 +26,8 @@ export default function Index() {
   const { contents } = useLoaderData<typeof loader>()
 
   return (
-    <div className='container mx-auto max-w-[1120px] space-y-10 md:space-y-16 pt-28 md:pt-40 pb-16'>
-      <h2 className='text-center text-2xl font-medium'>すべてのコラム</h2>
+    <div className='container mx-auto max-w-[1120px] space-y-10 md:space-y-16 pt-24 pb-16'>
+      <h2 className='text-center text-xl font-medium'>すべてのコラム</h2>
       {contents.length > 0 ? (
         <div className='grid lg:grid-cols-3 gap-8 justify-center'>
           {contents.map((content) => (

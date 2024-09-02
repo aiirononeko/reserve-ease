@@ -66,7 +66,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className='min-h-screen relative tracking-wider'>
+      <body className='min-h-screen relative tracking-widest'>
         <Header />
         {children}
         <Footer />

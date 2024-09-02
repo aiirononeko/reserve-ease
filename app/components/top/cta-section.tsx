@@ -1,4 +1,12 @@
-import { Link } from '@remix-run/react'
+import { Form } from '@remix-run/react'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '~/components/ui/dialog'
 
 import { Button } from '../ui/button'
 
@@ -10,9 +18,44 @@ export const CtaSection = () => {
           まずはあなたのブランドイメージにあった予約サイトを作ってみましょう。
         </h2>
         <div className='flex justify-center'>
-          <Button asChild className='w-2/3 max-w-80'>
-            <Link to='/'>初月無料で試す</Link>
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className='w-2/3 max-w-80'>初月無料で使ってみる</Button>
+            </DialogTrigger>
+            <DialogContent className='space-y-4'>
+              <DialogHeader className='space-y-6'>
+                <DialogTitle className='text-2xl text-left'>
+                  ReserveEaseに先行登録でずっと月額500円でご利用いただけます！
+                </DialogTitle>
+                <DialogDescription className='leading-8 text-left'>
+                  ReserveEaseは現在開発中のため、すぐにサービスをご利用いただくことができません。
+                  <br />
+                  先行登録いただいた方には
+                  <strong>
+                    通常月額料金980円のところを、永年500円でご利用いただけるキャンペーン
+                  </strong>
+                  を実施しております！
+                  <br />
+                  リリース日は<strong>2024年11月1日</strong>
+                  を予定しております。（開発状況により変動する可能性があります）
+                  <br />
+                  先行登録いただければ、サービスリリース直前にメールにてお知らせいたします。
+                  <br />
+                  課金はサービスリリース後、お客様に月額料金の支払い手続きを実施いただくまで発生いたしません。
+                </DialogDescription>
+              </DialogHeader>
+              <Form method='post'>
+                <Button type='submit' className='w-full'>
+                  <img
+                    src='/assets/google.svg'
+                    alt='google logo'
+                    className='mr-2'
+                  />
+                  Googleでログイン
+                </Button>
+              </Form>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </div>

@@ -1,4 +1,9 @@
-import type { MetaFunction } from '@remix-run/cloudflare'
+import {
+  ActionFunction,
+  ActionFunctionArgs,
+  type MetaFunction,
+  redirect,
+} from '@remix-run/cloudflare'
 import { BrandingSection } from '~/components/top/branding-section'
 import { ColumnSection } from '~/components/top/column-section'
 import { ComparisonSection } from '~/components/top/comparison-section'
@@ -7,6 +12,25 @@ import { CustomerSupportSection } from '~/components/top/customer-support-sectio
 import { FeaturesSection } from '~/components/top/features-section'
 import { HeroSection } from '~/components/top/hero-section'
 import { ProsSection } from '~/components/top/pros-section'
+import { createSupabaseClient } from '~/lib/supabase.server'
+
+export const action: ActionFunction = async ({
+  request,
+  context,
+}: ActionFunctionArgs) => {
+  const { supabase, headers } = createSupabaseClient(request, context)
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: `${context.cloudflare.env.BASE_URL}/auth/google/callback`,
+    },
+  })
+  if (error) {
+    console.error(`ERROR: ${error.message}`)
+    return new Response(null, { status: 400, headers })
+  }
+  return redirect(data.url ?? '/', { headers })
+}
 
 export default function Index() {
   return (

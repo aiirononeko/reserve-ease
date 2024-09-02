@@ -2,7 +2,7 @@ import { Link } from '@remix-run/react'
 
 export const Footer = () => {
   return (
-    <footer className='border-t sticky top-full p-8'>
+    <footer className='border-t sticky top-full p-6'>
       <div className='max-w-[620px] mx-auto space-y-8'>
         <div className='container grid grid-cols-2 gap-5 justify-center md:grid-cols-4'>
           <Link to='/' className='text-xs hover:underline'>
