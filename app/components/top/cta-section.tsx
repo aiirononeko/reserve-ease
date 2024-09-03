@@ -1,4 +1,3 @@
-import { Form } from '@remix-run/react'
 import {
   Dialog,
   DialogContent,
@@ -9,6 +8,7 @@ import {
 } from '~/components/ui/dialog'
 
 import { Button } from '../ui/button'
+import { GoogleLoginForm } from './google-login-form'
 
 export const CtaSection = () => {
   return (
@@ -44,16 +44,7 @@ export const CtaSection = () => {
                   課金はサービスリリース後、お客様に月額料金の支払い手続きを実施いただくまで発生いたしません。
                 </DialogDescription>
               </DialogHeader>
-              <Form method='post'>
-                <Button type='submit' className='w-full'>
-                  <img
-                    src='/assets/google.svg'
-                    alt='google logo'
-                    className='mr-2'
-                  />
-                  Googleでログイン
-                </Button>
-              </Form>
+              <GoogleLoginForm />
             </DialogContent>
           </Dialog>
         </div>
