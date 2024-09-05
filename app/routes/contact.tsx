@@ -1,6 +1,7 @@
 import {
   ActionFunctionArgs,
   LoaderFunctionArgs,
+  json,
   redirect,
 } from '@remix-run/cloudflare'
 import { Form, useLoaderData } from '@remix-run/react'
@@ -9,12 +10,13 @@ import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
 import { Textarea } from '~/components/ui/textarea'
 import { createSupabaseClient } from '~/lib/supabase.server'
+import { notification } from '~/utils/notification.server'
 
 export const loader = async ({ request, context }: LoaderFunctionArgs) => {
   const { supabase } = createSupabaseClient(request, context)
   const { data } = await supabase.auth.getUser()
 
-  return { user: data }
+  return json({ user: data.user })
 }
 
 export const action = async ({ request, context }: ActionFunctionArgs) => {
@@ -24,18 +26,13 @@ export const action = async ({ request, context }: ActionFunctionArgs) => {
   const message = formData.get('message')
 
   const notificationMessage = `${name}さんからお問い合わせがありました。\n問い合わせ内容: ${message}\nメールアドレス: ${email}`
-  const response = await fetch(
+  const response = await notification(
     context.cloudflare.env.DISCORD_CONTACT_WEBHOOK_URL,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ content: notificationMessage }),
-    },
+    notificationMessage,
   )
 
   if (!response.ok) {
+    console.error('Error executing notification webhook: ', response.body)
     return new Response(null, { status: 500 })
   }
 
@@ -54,7 +51,7 @@ export default function Contact() {
           <Input
             type='text'
             name='name'
-            defaultValue={user ? user.user?.user_metadata.name : ''}
+            defaultValue={user ? user.user_metadata.name : ''}
           />
         </div>
         <div className='space-y-2'>
@@ -62,7 +59,7 @@ export default function Contact() {
           <Input
             type='email'
             name='email'
-            defaultValue={user ? user.user?.email : ''}
+            defaultValue={user ? user.email : ''}
           />
         </div>
         <div className='space-y-2'>
