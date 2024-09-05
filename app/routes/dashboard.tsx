@@ -4,7 +4,7 @@ import { Separator } from '~/components/ui/separator'
 
 export default function Dashboard() {
   return (
-    <div className='container mx-auto max-w-[1120px] space-y-10 md:space-y-16 pt-24 pb-16'>
+    <div className='container mx-auto max-w-[620px] space-y-10 md:space-y-16 pt-24 pb-16'>
       <h2 className='text-center text-xl font-medium'>ダッシュボード</h2>
       <div className='mx-auto max-w-[620px] text-left space-y-6'>
         <p>ReserveEaseに先行登録いただき誠にありがとうございます！</p>
@@ -40,7 +40,7 @@ export default function Dashboard() {
         </p>
         <p>お気軽にご連絡ください。</p>
         <Button variant='link' asChild className='pl-0'>
-          <Link to='/' className='underline'>
+          <Link to='/contact' className='underline'>
             お問い合わせフォームはこちら
           </Link>
         </Button>
