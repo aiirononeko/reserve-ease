@@ -11,6 +11,7 @@ import { CtaSection } from '~/components/top/cta-section'
 import { CustomerSupportSection } from '~/components/top/customer-support-section'
 import { FeaturesSection } from '~/components/top/features-section'
 import { HeroSection } from '~/components/top/hero-section'
+import { HowToUseSection } from '~/components/top/how-to-use-section'
 import { ProsSection } from '~/components/top/pros-section'
 import { createSupabaseClient } from '~/lib/supabase.server'
 
@@ -34,12 +35,13 @@ export const action: ActionFunction = async ({
 
 export default function Index() {
   return (
-    <div className='space-y-16 mb-16'>
+    <div className='space-y-12 md:space-y-16 mb-16'>
       <HeroSection />
       <FeaturesSection />
       <BrandingSection />
       <ComparisonSection />
       <ProsSection />
+      {/* <HowToUseSection /> */}
       <CustomerSupportSection />
       <ColumnSection />
       <CtaSection />

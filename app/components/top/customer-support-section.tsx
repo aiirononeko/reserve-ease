@@ -14,7 +14,6 @@ export const CustomerSupportSection = () => {
             ※ご連絡いただいてから24時間~48時間で対応させていただきます。
           </p>
         </div>
-        <div className='bg-gray-100 w-full h-80 rounded-lg'></div>
       </div>
     </div>
   )

@@ -1,3 +1,5 @@
+import brandingImg from '/assets/top-branding.webp'
+
 export const BrandingSection = () => {
   return (
     <div className='p-5 flex flex-col justify-center items-center'>
@@ -13,7 +15,9 @@ export const BrandingSection = () => {
             あなたのブランディングに寄り添った、おしゃれな予約サイトで顧客に良質な予約体験を提供しましょう。
           </p>
         </div>
-        <div className='bg-gray-100 w-full h-80 rounded-lg'></div>
+        <div className='w-full h-52 md:h-80 rounded-lg'>
+          <img src={brandingImg} />
+        </div>
       </div>
     </div>
   )
