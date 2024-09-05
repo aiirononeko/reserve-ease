@@ -1,6 +1,7 @@
 import {
   ActionFunctionArgs,
   LoaderFunctionArgs,
+  MetaFunction,
   json,
   redirect,
 } from '@remix-run/cloudflare'
@@ -74,4 +75,43 @@ export default function Contact() {
       </Form>
     </div>
   )
+}
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: 'お問い合わせ | ReserveEase' },
+    {
+      description:
+        'ReserveEaseはフリーランスや個人事業主向けの予約システムです。あなたのブランドに寄り添った予約ページを作成し、顧客に良質な予約体験を提供しましょう。',
+    },
+    {
+      property: 'og:url',
+      content: 'https://www.reserve-ease.com/contact',
+    },
+    {
+      property: 'og:image',
+      content: 'https://www.reserve-ease.com/assets/top-ogp.webp',
+    },
+    {
+      property: 'og:title',
+      content: 'お問い合わせ | ReserveEase',
+    },
+    {
+      property: 'og:description',
+      content:
+        'ReserveEaseはフリーランスや個人事業主向けの予約システムです。あなたのブランドに寄り添った予約ページを作成し、顧客に良質な予約体験を提供しましょう。',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+    {
+      property: 'twitter:card',
+      content: 'summary_large_image',
+    },
+    {
+      property: 'twitter:title',
+      content: 'お問い合わせ | ReserveEase',
+    },
+  ]
 }

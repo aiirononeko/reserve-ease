@@ -14,20 +14,25 @@ import * as gtag from '~/utils/gtags.client'
 
 import { Footer } from './components/footer'
 import { Header } from './components/header'
+import { createSupabaseClient } from './lib/supabase.server'
 import './tailwind.css'
 
-export const loader = async ({ context }: LoaderFunctionArgs) => {
+export const loader = async ({ request, context }: LoaderFunctionArgs) => {
+  const { supabase } = createSupabaseClient(request, context)
+  const { data } = await supabase.auth.getUser()
+
   return json({
     gaTrackingId:
       context.cloudflare.env.ENV === 'production'
         ? context.cloudflare.env.GA_TRACKING_ID
         : null,
+    user: data.user,
   })
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation()
-  const { gaTrackingId } = useLoaderData<typeof loader>()
+  const { gaTrackingId, user } = useLoaderData<typeof loader>()
 
   useEffect(() => {
     if (gaTrackingId?.length) {
@@ -67,7 +72,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className='min-h-screen relative tracking-widest'>
-        <Header />
+        <Header user={user} />
         {children}
         <Footer />
         <ScrollRestoration />
