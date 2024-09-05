@@ -23,21 +23,19 @@ export const action = async ({ request, context }: ActionFunctionArgs) => {
   const email = formData.get('email')
   const message = formData.get('message')
 
-  const notificationMessage = `${name}さんからお問い合わせがありました。\n${message}`
-  const requestBody = `{\"content\":\"${notificationMessage}\"}`
+  const notificationMessage = `${name}さんからお問い合わせがありました。\n問い合わせ内容: ${message}\nメールアドレス: ${email}`
   const response = await fetch(
     context.cloudflare.env.DISCORD_CONTACT_WEBHOOK_URL,
     {
-      method: 'post',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(requestBody),
+      body: JSON.stringify({ content: notificationMessage }),
     },
   )
 
   if (!response.ok) {
-    console.error(response.body)
     return new Response(null, { status: 500 })
   }
 
